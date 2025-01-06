@@ -1,0 +1,44 @@
+### Register User
+POST http://localhost:5001/api/users/register
+Content-Type: application/json
+
+{
+  "username": "adminsuper1",
+  "password": "password123",
+  "role": "superadmin"
+}
+
+### Login User
+POST http://localhost:5001/api/login
+Content-Type: application/json
+
+{
+  "username": "adminsuper2",
+  "password": "password123"
+}
+
+### Register User (Superadmin Only)
+POST http://localhost:5001/api/users/register
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Nzk0YzZiNmM3ODA5YjkwZDI3YWY2MyIsImlhdCI6MTczNjAwMzI4NCwiZXhwIjoxNzM2MDg5Njg0fQ.c7-206Yg2PmSrCq-E0AUykjTKxVexmXnknIIHi2ez8o
+Content-Type: application/json
+
+{
+  "username": "adminbagian",
+  "password": "password123",
+  "role": "adminbagian"
+}
+
+### Delete User (Superadmin Only)
+DELETE http://localhost:5001/api/users/64aeb71f9b7a2b3e4cbd1234
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Nzk0YzZiNmM3ODA5YjkwZDI3YWY2MyIsImlhdCI6MTczNjAwMzI4NCwiZXhwIjoxNzM2MDg5Njg0fQ.c7-206Yg2PmSrCq-E0AUykjTKxVexmXnknIIHi2ez8o
+
+### Edit User (Superadmin or Self-Edit)
+PUT http://localhost:5001/api/users/64aeb71f9b7a2b3e4cbd1234
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Nzk0YzZiNmM3ODA5YjkwZDI3YWY2MyIsImlhdCI6MTczNjAwMzI4NCwiZXhwIjoxNzM2MDg5Njg0fQ.c7-206Yg2PmSrCq-E0AUykjTKxVexmXnknIIHi2ez8o
+Content-Type: application/json
+
+{
+  "username": "updatedUser",
+  "password": "newpassword123",
+  "role": "kasubag"
+}
