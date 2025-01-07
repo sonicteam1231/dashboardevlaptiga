@@ -5,26 +5,11 @@ import { ThemeProvider } from "@/contexts/theme-context";
 import Layout from "@/routes/layout";
 import DashboardPage from "@/routes/dashboard/page";
 import Login from "./layouts/login";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { getMe } from "./features/authSlice";
-import { use, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 function App() {
-
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
-    const {isError} = useSelector((state => state.auth))
-    
-    useEffect(()=>{
-        dispatch(getMe())
-    }, [dispatch])
-
-    useEffect(() =>{
-        if(isError){
-            navigate("/login")
-        }
-    },[isError,navigate])
+    const { user } = useSelector((state) => state.auth);
+  
     const router = createBrowserRouter([
         {
             path: "/login",
@@ -32,7 +17,7 @@ function App() {
         },
         { 
             path: "/",
-            element: <Layout />,
+            element: user ? <Layout /> : <Login />,
             children: [
                 {
                     index: true,

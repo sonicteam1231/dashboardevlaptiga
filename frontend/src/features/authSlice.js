@@ -12,7 +12,7 @@ const initialState = {
 
 export const LoginUser = createAsyncThunk("user/LoginUser", async (user, thunkAPI) => {
     try {
-        const response = await axios.post("http://localhost:5001/api/users/login", {
+        const response = await axios.post("http://localhost:5001/api/login", {
             username: user.username,
             password: user.password,
         });
@@ -27,7 +27,7 @@ export const LoginUser = createAsyncThunk("user/LoginUser", async (user, thunkAP
 
 export const getMe = createAsyncThunk("user/getMe", async ( thunkAPI) => {
     try {
-        const response = await axios.get("http://localhost:5001/api/users/me");
+        const response = await axios.get("http://localhost:5001/api/me");
         return response.data;
     } catch (error) {
         const message = error.response?.data?.message || "Login failed. Please try again.";
@@ -38,7 +38,7 @@ export const getMe = createAsyncThunk("user/getMe", async ( thunkAPI) => {
 
 export const LogOut = createAsyncThunk("user/LogOut", async () => {
     
-       await axios.delete("http://localhost:5001/api/users/logout");
+       await axios.delete("http://localhost:5001/api/logout");
 
 });
 
